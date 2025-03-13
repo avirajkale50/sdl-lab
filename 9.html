@@ -1,0 +1,94 @@
+.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Events Example</h2>
+    
+    <div class="box" id="colorBox"></div>
+    
+    <input type="text" id="textInput" placeholder="Type something...">
+    <button id="clickBtn">Click Me!</button>
+    
+    <p id="output">Events will be displayed here</p>
+
+    <script>
+        // Getting DOM elements
+        const box = document.getElementById('colorBox');
+        const textInput = document.getElementById('textInput');
+        const clickBtn = document.getElementById('clickBtn');
+        const output = document.getElementById('output');
+
+        // Mouse events
+        box.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#e74c3c';
+            displayMessage('Mouse entered the box');
+        });
+
+        box.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '#3498db';
+            displayMessage('Mouse left the box');
+        });
+
+        // Click event
+        clickBtn.addEventListener('click', function() {
+            displayMessage('Button clicked!');
+        });
+
+        // Keyboard events
+        textInput.addEventListener('keyup', function(event) {
+            displayMessage('Key pressed: ' + event.key);
+        });
+
+        // Focus events
+        textInput.addEventListener('focus', function() {
+            this.style.backgroundColor = '#fff3cd';
+            displayMessage('Input focused');
+        });
+
+        textInput.addEventListener('blur', function() {
+            this.style.backgroundColor = 'white';
+            displayMessage('Input lost focus');
+        });
+
+        // Helper function to display messages
+        function displayMessage(message) {
+            output.textContent = message;
+            console.log(message);
+        }
+
+        // Window load event
+        window.addEventListener('load', function() {
+            displayMessage('Page loaded successfully');
+        });
+
+        // Document ready event
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+        });
+    </script>
+</body>
+</html>

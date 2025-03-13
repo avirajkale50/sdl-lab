@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up & Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+        #welcome {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="signupBox">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUser" placeholder="Enter Username">
+        <input type="password" id="signupPass" placeholder="Enter Password">
+        <button onclick="signUp()">Sign Up</button>
+        <p id="signupMsg" style="color: red;"></p>
+    </div>
+
+    <div class="container hidden" id="loginBox">
+        <h2>Login</h2>
+        <input type="text" id="loginUser" placeholder="Enter Username">
+        <input type="password" id="loginPass" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+        <p id="loginMsg" style="color: red;"></p>
+    </div>
+
+    <div class="container hidden" id="welcomeBox">
+        <h2>Welcome</h2>
+        <p id="welcome"></p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function signUp() {
+            let username = document.getElementById("signupUser").value.trim();
+            let password = document.getElementById("signupPass").value.trim();
+            let message = document.getElementById("signupMsg");
+
+            if (username === "" || password === "") {
+                message.innerText = "All fields are required!";
+                return;
+            }
+            if (password.length < 6) {
+                message.innerText = "Password must be at least 6 characters long!";
+                return;
+            }
+
+            // Store data in localStorage
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+            alert("Sign Up Successful! Please Login.");
+
+            document.getElementById("signupBox").classList.add("hidden");
+            document.getElementById("loginBox").classList.remove("hidden");
+        }
+
+        function login() {
+            let username = document.getElementById("loginUser").value.trim();
+            let password = document.getElementById("loginPass").value.trim();
+            let message = document.getElementById("loginMsg");
+
+            let storedUser = localStorage.getItem("username");
+            let storedPass = localStorage.getItem("password");
+
+            if (username === storedUser && password === storedPass) {
+                document.getElementById("loginBox").classList.add("hidden");
+                document.getElementById("welcomeBox").classList.remove("hidden");
+                document.getElementById("welcome").innerText = "Hello, " + username + "!";
+            } else {
+                message.innerText = "Invalid Username or Password!";
+            }
+        }
+
+        function logout() {
+            document.getElementById("welcomeBox").classList.add("hidden");
+            document.getElementById("loginBox").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>

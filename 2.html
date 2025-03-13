@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Time Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a3c8a;
+            margin-bottom: 20px;
+        }
+        
+        .station-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: #1a3c8a;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .train-number {
+            font-weight: bold;
+            color: #1a3c8a;
+        }
+        
+        .delayed {
+            color: red;
+        }
+        
+        .on-time {
+            color: green;
+        }
+        
+        .train-type {
+            font-size: 0.9em;
+            background-color: #e6e6e6;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        
+        .express {
+            background-color: #ffd700;
+        }
+        
+        .superfast {
+            background-color: #ff9999;
+        }
+        
+        .passenger {
+            background-color: #99ff99;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Railway Time Table</h1>
+        
+        <div class="station-info">
+            <div>Station: Mumbai Central (MMCT)</div>
+            <div>Date: February 27, 2025</div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Train No.</th>
+                    <th>Train Name</th>
+                    <th>Type</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Platform</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="train-number">12951</td>
+                    <td>Mumbai Rajdhani</td>
+                    <td><span class="train-type superfast">Superfast</span></td>
+                    <td>New Delhi</td>
+                    <td>Mumbai Central</td>
+                    <td>08:35</td>
+                    <td>-</td>
+                    <td>4</td>
+                    <td class="on-time">On Time</td>
+                </tr>
+                <tr>
+                    <td class="train-number">12009</td>
+                    <td>Shatabdi Express</td>
+                    <td><span class="train-type express">Express</span></td>
+                    <td>Mumbai Central</td>
+                    <td>Ahmedabad</td>
+                    <td>-</td>
+                    <td>06:25</td>
+                    <td>3</td>
+                    <td class="on-time">On Time</td>
+                </tr>
+                <tr>
+                    <td class="train-number">19011</td>
+                    <td>Gujarat Express</td>
+                    <td><span class="train-type express">Express</span></td>
+                    <td>Mumbai Central</td>
+                    <td>Ahmedabad</td>
+                    <td>-</td>
+                    <td>09:10</td>
+                    <td>1</td>
+                    <td class="delayed">Delayed by 15 min</td>
+                </tr>
+                <tr>
+                    <td class="train-number">59439</td>
+                    <td>Ahmedabad Passenger</td>
+                    <td><span class="train-type passenger">Passenger</span></td>
+                    <td>Ahmedabad</td>
+                    <td>Mumbai Central</td>
+                    <td>10:15</td>
+                    <td>10:30</td>
+                    <td>2</td>
+                    <td class="on-time">On Time</td>
+                </tr>
+                <tr>
+                    <td class="train-number">12953</td>
+                    <td>August Kranti Rajdhani</td>
+                    <td><span class="train-type superfast">Superfast</span></td>
+                    <td>Mumbai Central</td>
+                    <td>New Delhi</td>
+                    <td>-</td>
+                    <td>17:40</td>
+                    <td>4</td>
+                    <td class="on-time">On Time</td>
+                </tr>
+                <tr>
+                    <td class="train-number">22953</td>
+                    <td>Gujarat Superfast</td>
+                    <td><span class="train-type superfast">Superfast</span></td>
+                    <td>Mumbai Central</td>
+                    <td>Ahmedabad</td>
+                    <td>-</td>
+                    <td>14:20</td>
+                    <td>3</td>
+                    <td class="delayed">Delayed by 30 min</td>
+                </tr>
+                <tr>
+                    <td class="train-number">19038</td>
+                    <td>Avantika Express</td>
+                    <td><span class="train-type express">Express</span></td>
+                    <td>Indore</td>
+                    <td>Mumbai Central</td>
+                    <td>11:15</td>
+                    <td>11:45</td>
+                    <td>5</td>
+                    <td class="on-time">On Time</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p>Note: Schedule is subject to change. Please check with the station master for the latest updates.</p>
+            <p>For inquiries, call: 139 or visit www.indianrail.gov.in</p>
+        </div>
+    </div>
+</body>
+</html>
